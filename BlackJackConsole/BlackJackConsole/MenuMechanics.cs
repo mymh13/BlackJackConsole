@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlackJackConsole
+﻿namespace BlackJackConsole
 {
     class MenuMechanics
     {
@@ -46,27 +40,10 @@ namespace BlackJackConsole
 
         internal static void EndGame()
         {
-            while (true)
-            {
-                Console.WriteLine("\nWould you like to play again? Y/N");
-                string playAgain = (Console.ReadLine() ?? "n").ToLower(System.Globalization.CultureInfo.CurrentCulture);
-                if (playAgain == "y")
-                {
-                    GameMechanics.StartGame();
-                }
-                else if (playAgain == "n")
-                {
-                    Console.WriteLine("\nThanks for playing! Goodbye!");
-                    Console.WriteLine("Press any key to exit.");
-                    Console.ReadKey();
-                    Environment.Exit(0);
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter either Y or N to progress.");
-                }
-            }
+            Console.WriteLine("\nThanks for playing! Goodbye!");
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
+            Environment.Exit(0);
         }
     }
 }
