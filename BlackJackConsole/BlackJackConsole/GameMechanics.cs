@@ -4,7 +4,7 @@ namespace BlackJackConsole
 {
     internal class GameMechanics
     {
-        internal static Random random = new Random(); // Changed to internal
+        internal static Random random = new Random(); // static random so it is only created once :D
 
         internal static void StartGame()
         {
