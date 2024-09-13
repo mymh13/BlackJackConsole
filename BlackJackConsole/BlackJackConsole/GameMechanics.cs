@@ -8,6 +8,9 @@ namespace BlackJackConsole
 {
     internal class GameMechanics
     {
+        private static readonly Random randomCard = new Random();
+        // we set this as a static readonly field so we don't have to create a new instance of Random every time we want to deal a card
+        
         internal static void StartGame()
         {
             int playerScore = 0;
@@ -25,20 +28,25 @@ namespace BlackJackConsole
                 playerScore = 0;
                 dealerScore = 0;
 
-                playerScore = DealCard(playerScore);
-                playerScore = DealCard(playerScore);
+                playerScore = DealCard(playerScore, "Player");
+                playerScore = DealCard(playerScore, "Player");
 
-                dealerScore = DealCard(dealerScore);
-                dealerScore = DealCard(dealerScore);
+                dealerScore = DealCard(dealerScore, "Dealer");
+                dealerScore = DealCard(dealerScore, "Dealer");
 
                 Console.WriteLine($"\nYour score: {playerScore}");
-                Console.WriteLine($"Dealer score: {dealerScore}");
+                Console.WriteLine($"Dealer's visible card': {dealerScore}");
 
                 playerScore = PlayerTurn(playerScore);
-                dealerScore = DealerTurn(dealerScore);
 
-                Console.WriteLine($"\nYour score: {playerScore}");
-                Console.WriteLine($"Dealer score: {dealerScore}");
+                // dealer only play if player didn't bust
+                if (playerScore <= 21)
+                {
+                    dealerScore = DealerTurn(dealerScore);
+                }
+
+                Console.WriteLine($"\nYour final score: {playerScore}");
+                Console.WriteLine($"Dealer's final score: {dealerScore}");
 
                 if (playerScore > 21)
                 {
@@ -78,15 +86,14 @@ namespace BlackJackConsole
                     MenuMechanics.EndGame();
                 }
             }
-
         }
-        private static int DealCard(int playerScore)
+
+        private static int DealCard(int currentScore, string participant)
         {
-            Random randomCard = new Random();
             int cardValue = randomCard.Next(1, 12);
-            playerScore += cardValue;
-            Console.WriteLine($"You were dealt a {cardValue}. Your new total is {playerScore}.");
-            return playerScore;
+            currentScore += cardValue;
+            Console.WriteLine($"{participant} was dealt a {cardValue}. Their new total is {currentScore}.");
+            return currentScore;
         }
 
         private static int PlayerTurn(int playerScore)
@@ -98,7 +105,7 @@ namespace BlackJackConsole
 
                 if (playerChoice == "h")
                 {
-                    playerScore = DealCard(playerScore);
+                    playerScore = DealCard(playerScore, "Player");
                     if (playerScore > 21)
                     {
                         Console.WriteLine("\nYou busted!");
@@ -122,14 +129,17 @@ namespace BlackJackConsole
         {
             while (dealerScore < 17)
             {
-                dealerScore = DealCard(dealerScore);
+                dealerScore = DealCard(dealerScore, "Dealer");
                 if (dealerScore > 21)
                 {
                     Console.WriteLine("\nDealer busted!");
                     break;
                 }
             }
-            Console.WriteLine("\nDealer stands.");
+            if (dealerScore <= 21)
+            {
+                Console.WriteLine("\nDealer stands.");
+            }
             return dealerScore;
         }
     }
