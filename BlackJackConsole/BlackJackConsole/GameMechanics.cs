@@ -82,7 +82,11 @@ namespace BlackJackConsole
         }
         private static int DealCard(int playerScore)
         {
-            // here we want to generate a random number between 1 and 11
+            Random randomCard = new Random();
+            int cardValue = randomCard.Next(1, 12);
+            playerScore += cardValue;
+            Console.WriteLine($"You were dealt a {cardValue}. Your new total is {playerScore}.");
+            return playerScore;
         }
 
         private static int PlayerTurn(int playerScore)
