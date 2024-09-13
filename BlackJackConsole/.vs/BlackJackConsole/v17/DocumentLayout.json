@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C4DF711C-F77C-4C32-BCB3-F048E49C0A89}|BlackJackConsole\\BlackJackConsole.csproj|c:\\devproj\\blackjackconsole\\blackjackconsole\\blackjackconsole\\gamemechanics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4DF711C-F77C-4C32-BCB3-F048E49C0A89}|BlackJackConsole\\BlackJackConsole.csproj|solutionrelative:blackjackconsole\\gamemechanics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4DF711C-F77C-4C32-BCB3-F048E49C0A89}|BlackJackConsole\\BlackJackConsole.csproj|c:\\devproj\\blackjackconsole\\blackjackconsole\\blackjackconsole\\menumechanics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4DF711C-F77C-4C32-BCB3-F048E49C0A89}|BlackJackConsole\\BlackJackConsole.csproj|solutionrelative:blackjackconsole\\menumechanics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4DF711C-F77C-4C32-BCB3-F048E49C0A89}|BlackJackConsole\\BlackJackConsole.csproj|c:\\devproj\\blackjackconsole\\blackjackconsole\\blackjackconsole\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4DF711C-F77C-4C32-BCB3-F048E49C0A89}|BlackJackConsole\\BlackJackConsole.csproj|solutionrelative:blackjackconsole\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +27,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GameMechanics.cs",
+              "DocumentMoniker": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\BlackJackConsole\\GameMechanics.cs",
+              "RelativeDocumentMoniker": "BlackJackConsole\\GameMechanics.cs",
+              "ToolTip": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\BlackJackConsole\\GameMechanics.cs",
+              "RelativeToolTip": "BlackJackConsole\\GameMechanics.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T20:30:17.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MenuMechanics.cs",
+              "DocumentMoniker": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\BlackJackConsole\\MenuMechanics.cs",
+              "RelativeDocumentMoniker": "BlackJackConsole\\MenuMechanics.cs",
+              "ToolTip": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\BlackJackConsole\\MenuMechanics.cs",
+              "RelativeToolTip": "BlackJackConsole\\MenuMechanics.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAuwCsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T20:18:37.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\BlackJackConsole\\Program.cs",
               "RelativeDocumentMoniker": "BlackJackConsole\\Program.cs",
               "ToolTip": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\BlackJackConsole\\Program.cs",
               "RelativeToolTip": "BlackJackConsole\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-31T16:53:14.075Z",
               "EditorCaption": ""
