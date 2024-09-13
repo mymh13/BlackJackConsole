@@ -120,7 +120,17 @@ namespace BlackJackConsole
 
         private static int DealerTurn(int dealerScore)
         {
-            // here we want to have the dealer hit until they have 17 or higher
+            while (dealerScore < 17)
+            {
+                dealerScore = DealCard(dealerScore);
+                if (dealerScore > 21)
+                {
+                    Console.WriteLine("\nDealer busted!");
+                    break;
+                }
+            }
+            Console.WriteLine("\nDealer stands.");
+            return dealerScore;
         }
     }
 }
