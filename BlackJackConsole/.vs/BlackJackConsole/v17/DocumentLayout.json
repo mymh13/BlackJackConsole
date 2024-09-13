@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "BlackJackConsole\\GameMechanics.cs",
               "ToolTip": "C:\\DevProj\\BlackJackConsole\\BlackJackConsole\\BlackJackConsole\\GameMechanics.cs",
               "RelativeToolTip": "BlackJackConsole\\GameMechanics.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAuwFgAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAwHcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-13T20:30:17.273Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "BlackJackConsole\\MenuMechanics.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAYwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T20:18:37.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T20:18:37.987Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "BlackJackConsole\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-31T16:53:14.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-31T16:53:14.075Z"
             }
           ]
         }

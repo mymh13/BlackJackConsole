@@ -91,8 +91,33 @@ namespace BlackJackConsole
 
         private static int PlayerTurn(int playerScore)
         {
-            // here we want to ask the player if they want to hit or stand
+            while (true)
+            {
+                Console.WriteLine("\nWould you like to hit or stand? (H/S)");
+                string playerChoice = (Console.ReadLine() ?? "s").ToLower(System.Globalization.CultureInfo.CurrentCulture);
+
+                if (playerChoice == "h")
+                {
+                    playerScore = DealCard(playerScore);
+                    if (playerScore > 21)
+                    {
+                        Console.WriteLine("\nYou busted!");
+                        break;
+                    }
+                }
+                else if (playerChoice == "s")
+                {
+                    Console.WriteLine("\nYou chose to stand.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter either H (hit) or S (stand).");
+                }
+            }
+            return playerScore;
         }
+
         private static int DealerTurn(int dealerScore)
         {
             // here we want to have the dealer hit until they have 17 or higher
