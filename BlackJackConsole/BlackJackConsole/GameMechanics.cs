@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlackJackConsole
 {
     internal class GameMechanics
     {
-        private static readonly Random randomCard = new Random();
-        // we set this as a static readonly field so we don't have to create a new instance of Random every time we want to deal a card
-        
+        internal static Random random = new Random(); // Changed to internal
+
         internal static void StartGame()
         {
-            int playerScore = 0;
-            int dealerScore = 0;
-            int playerWins = 0;
-            int dealerWins = 0;
-            int ties = 0;
+            Player player = new Player();
+            Dealer dealer = new Dealer();
             bool playAgain = true;
 
             while (playAgain)
@@ -25,61 +17,26 @@ namespace BlackJackConsole
                 Console.Clear();
                 Console.WriteLine("Welcome to the table! Let's play some Blackjack!\n");
 
-                playerScore = 0;
-                dealerScore = 0;
+                ResetScore(player);
+                ResetScore(dealer);
 
-                playerScore = DealCard(playerScore, "Player");
-                playerScore = DealCard(playerScore, "Player");
+                DealInitialCards(player, "Player");
+                DealInitialCards(dealer, "Dealer");
 
-                dealerScore = DealCard(dealerScore, "Dealer");
-                dealerScore = DealCard(dealerScore, "Dealer");
-
-                Console.WriteLine($"\nYour score: {playerScore}");
-                Console.WriteLine($"Dealer's visible card': {dealerScore}");
-
-                playerScore = PlayerTurn(playerScore);
-
-                // dealer only play if player didn't bust
-                if (playerScore <= 21)
+                if (!IsBusted(player))
                 {
-                    dealerScore = DealerTurn(dealerScore);
+                    player.PlayTurn();
                 }
 
-                Console.WriteLine($"\nYour final score: {playerScore}");
-                Console.WriteLine($"Dealer's final score: {dealerScore}");
-
-                if (playerScore > 21)
+                if (!IsBusted(player))  // Dealer only plays if player hasn't busted
                 {
-                    Console.WriteLine("\nYou busted! Dealer wins!");
-                    dealerWins++;
-                }
-                else if (dealerScore > 21)
-                {
-                    Console.WriteLine("\nDealer busted! You win!");
-                    playerWins++;
-                }
-                else if (playerScore > dealerScore)
-                {
-                    Console.WriteLine("\nYou win!");
-                    playerWins++;
-                }
-                else if (dealerScore > playerScore)
-                {
-                    Console.WriteLine("\nDealer wins!");
-                    dealerWins++;
-                }
-                else
-                {
-                    Console.WriteLine("\nIt's a tie!");
-                    ties++;
+                    dealer.PlayTurn();
                 }
 
-                Console.WriteLine($"\nPlayer wins: {playerWins}");
-                Console.WriteLine($"Dealer wins: {dealerWins}");
-                Console.WriteLine($"Ties: {ties}");
+                DetermineWinner(player, dealer);
 
                 Console.WriteLine("\nWould you like to play again? Y/N");
-                string playAgainCheck = (Console.ReadLine() ?? "n").ToLower(System.Globalization.CultureInfo.CurrentCulture);
+                string playAgainCheck = (Console.ReadLine() ?? "n").ToLower();
                 if (playAgainCheck != "y")
                 {
                     playAgain = false;
@@ -88,59 +45,55 @@ namespace BlackJackConsole
             }
         }
 
-        private static int DealCard(int currentScore, string participant)
+        private static void DetermineWinner(Player player, Dealer dealer)
         {
-            int cardValue = randomCard.Next(1, 12);
+            if (IsBusted(player))
+            {
+                Console.WriteLine("\nYou busted! Dealer wins!");
+            }
+            else if (IsBusted(dealer))
+            {
+                Console.WriteLine("\nDealer busted! You win!");
+            }
+            else if (player.Score > dealer.Score)
+            {
+                Console.WriteLine("\nYou win!");
+            }
+            else if (dealer.Score > player.Score)
+            {
+                Console.WriteLine("\nDealer wins!");
+            }
+            else
+            {
+                Console.WriteLine("\nIt's a tie!");
+            }
+
+            Console.WriteLine($"\nYour score: {player.Score}");
+            Console.WriteLine($"Dealer score: {dealer.Score}");
+        }
+
+        internal static int DealCard(string participant, int currentScore)
+        {
+            int cardValue = random.Next(1, 12);
             currentScore += cardValue;
             Console.WriteLine($"{participant} was dealt a {cardValue}. Their new total is {currentScore}.");
             return currentScore;
         }
 
-        private static int PlayerTurn(int playerScore)
+        internal static void DealInitialCards(dynamic participant, string name)
         {
-            while (true)
-            {
-                Console.WriteLine("\nWould you like to hit or stand? (H/S)");
-                string playerChoice = (Console.ReadLine() ?? "s").ToLower(System.Globalization.CultureInfo.CurrentCulture);
-
-                if (playerChoice == "h")
-                {
-                    playerScore = DealCard(playerScore, "Player");
-                    if (playerScore > 21)
-                    {
-                        Console.WriteLine("\nYou busted!");
-                        break;
-                    }
-                }
-                else if (playerChoice == "s")
-                {
-                    Console.WriteLine("\nYou chose to stand.");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter either H (hit) or S (stand).");
-                }
-            }
-            return playerScore;
+            participant.Score = DealCard(name, participant.Score);
+            participant.Score = DealCard(name, participant.Score);
         }
 
-        private static int DealerTurn(int dealerScore)
+        internal static bool IsBusted(dynamic participant)
         {
-            while (dealerScore < 17)
-            {
-                dealerScore = DealCard(dealerScore, "Dealer");
-                if (dealerScore > 21)
-                {
-                    Console.WriteLine("\nDealer busted!");
-                    break;
-                }
-            }
-            if (dealerScore <= 21)
-            {
-                Console.WriteLine("\nDealer stands.");
-            }
-            return dealerScore;
+            return participant.Score > 21;
+        }
+
+        internal static void ResetScore(dynamic participant)
+        {
+            participant.Score = 0;
         }
     }
 }
