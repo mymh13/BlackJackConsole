@@ -10,26 +10,88 @@ namespace BlackJackConsole
     {
         internal static void StartGame()
         {
-            Console.WriteLine("Would you like to play a game of Black Jack? Y/N");
+            int playerScore = 0;
+            int dealerScore = 0;
+            int playerWins = 0;
+            int dealerWins = 0;
+            int ties = 0;
+            bool playAgain = true;
 
-            while (true)
+            while (playAgain)
             {
-                string? play = Console.ReadLine();
-                if (play == "y")
+                Console.Clear();
+                Console.WriteLine("Welcome to the table! Let's play some Blackjack!\n");
+
+                playerScore = 0;
+                dealerScore = 0;
+
+                playerScore = DealCard(playerScore);
+                playerScore = DealCard(playerScore);
+
+                dealerScore = DealCard(dealerScore);
+                dealerScore = DealCard(dealerScore);
+
+                Console.WriteLine($"\nYour score: {playerScore}");
+                Console.WriteLine($"Dealer score: {dealerScore}");
+
+                playerScore = PlayerTurn(playerScore);
+                dealerScore = DealerTurn(dealerScore);
+
+                Console.WriteLine($"\nYour score: {playerScore}");
+                Console.WriteLine($"Dealer score: {dealerScore}");
+
+                if (playerScore > 21)
                 {
-                    Console.WriteLine("Great! Let's get started.");
-                    break;
+                    Console.WriteLine("\nYou busted! Dealer wins!");
+                    dealerWins++;
                 }
-                else if (play == "n")
+                else if (dealerScore > 21)
                 {
-                    Console.WriteLine("No problem! Maybe next time.");
-                    break;
+                    Console.WriteLine("\nDealer busted! You win!");
+                    playerWins++;
+                }
+                else if (playerScore > dealerScore)
+                {
+                    Console.WriteLine("\nYou win!");
+                    playerWins++;
+                }
+                else if (dealerScore > playerScore)
+                {
+                    Console.WriteLine("\nDealer wins!");
+                    dealerWins++;
                 }
                 else
                 {
-                    Console.WriteLine("Please enter either Y or N to progress.");
+                    Console.WriteLine("\nIt's a tie!");
+                    ties++;
+                }
+
+                Console.WriteLine($"\nPlayer wins: {playerWins}");
+                Console.WriteLine($"Dealer wins: {dealerWins}");
+                Console.WriteLine($"Ties: {ties}");
+
+                Console.WriteLine("\nWould you like to play again? Y/N");
+                string playAgainCheck = (Console.ReadLine() ?? "n").ToLower(System.Globalization.CultureInfo.CurrentCulture);
+                if (playAgainCheck != "y")
+                {
+                    playAgain = false;
+                    MenuMechanics.EndGame();
                 }
             }
+
+        }
+        private static int DealCard(int playerScore)
+        {
+            // here we want to generate a random number between 1 and 11
+        }
+
+        private static int PlayerTurn(int playerScore)
+        {
+            // here we want to ask the player if they want to hit or stand
+        }
+        private static int DealerTurn(int dealerScore)
+        {
+            // here we want to have the dealer hit until they have 17 or higher
         }
     }
 }
