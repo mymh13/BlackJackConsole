@@ -6,7 +6,7 @@ namespace BlackJackConsole
     {
         internal int Score { get; set; } // Made set accessible for GameMechanics
 
-        public void PlayTurn()
+        internal void PlayTurn()
         {
             while (true)
             {

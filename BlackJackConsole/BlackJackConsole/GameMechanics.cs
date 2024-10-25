@@ -30,7 +30,7 @@ namespace BlackJackConsole
 
                 if (!IsBusted(player))  // Dealer only plays if player hasn't busted
                 {
-                    dealer.PlayTurn();
+                    dealer.PlayTurn(player.Score);
                 }
 
                 DetermineWinner(player, dealer);
